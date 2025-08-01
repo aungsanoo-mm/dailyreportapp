@@ -1,0 +1,63 @@
+
+{% extends "base.html" %}
+
+{% block title %}Add Report{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-success text-white">
+        <h4 class="mb-0">Add Daily Report</h4>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="report_date" class="form-label">Report Date</label>
+                        <input type="date" class="form-control" id="report_date" name="report_date" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="project_id" class="form-label">Project</label>
+                        <select class="form-control" id="project_id" name="project_id" required>
+                            <option value="">Select Project</option>
+                            {% for project in projects %}
+                            <option value="{{ project.id }}">{{ project.project_no }} - {{ project.project_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="task" class="form-label">Task</label>
+                        <input type="text" class="form-control" id="task" name="task" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="department" class="form-label">Department</label>
+                        <input type="text" class="form-control" id="department" name="department">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="activity" class="form-label">Activity</label>
+                <textarea class="form-control" id="activity" name="activity" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="On Hold">On Hold</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Add Report</button>
+            <a href="{{ url_for('views.daily_activity') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

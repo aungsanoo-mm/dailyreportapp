@@ -1,0 +1,44 @@
+
+{% extends "base.html" %}
+
+{% block title %}Projects - Daily Report System{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Projects</h2>
+    <a href="{{ url_for('views.add_project') }}" class="btn btn-success">Add New Project</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Project No</th>
+                        <th>WBS No</th>
+                        <th>Function ID</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr>
+                        <td>{{ project.project_name }}</td>
+                        <td>{{ project.project_no or '-' }}</td>
+                        <td>{{ project.wbs_no or '-' }}</td>
+                        <td>{{ project.function_id or '-' }}</td>
+                        <td>{{ project.category or '-' }}</td>
+                        <td>{{ project.description or '-' }}</td>
+                        <td>{{ project.created_at.strftime('%Y-%m-%d') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

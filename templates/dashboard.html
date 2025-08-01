@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>Welcome to Daily Report System</h2>
+        <p>Hello, {{ current_user.username }}!</p>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Daily Activity Inquiry</h5>
+                <p class="card-text">View and search daily reports</p>
+                <a href="{{ url_for('views.daily_activity') }}" class="btn btn-success">View Reports</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Add New Report</h5>
+                <p class="card-text">Create a new daily activity report</p>
+                <a href="{{ url_for('views.add_report') }}" class="btn btn-success">Add Report</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Manage Projects</h5>
+                <p class="card-text">View and manage projects</p>
+                <a href="{{ url_for('views.projects') }}" class="btn btn-success">View Projects</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
