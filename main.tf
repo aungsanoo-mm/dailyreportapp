@@ -22,7 +22,7 @@ resource "aws_instance" "webserver" {
     instance_type = "t2.micro"
     key_name = "expenseapp"
     tags = {
-        Name = "Webapp"
+        Name = "Webapp_A"
     }
   
 }
